@@ -46,7 +46,7 @@ General-domain BERT models performed best, while a biomedical domain model perfo
 | RoBERTa-Base | 0.86 | 0.86 | Strong performer but less consistent |
 | BioMedBERT | 0.82 | 0.81 | Domain mismatch → lower performance |
 
-> **General-domain transformers were more effective than domain-specific models for cultural-heritage text.**  
+> **General-domain transformers were more effective than domain-specific models.**  
 > Class imbalance affected minority class performance, making macro-F1 a better metric than accuracy.
 
 ## Key Learnings
