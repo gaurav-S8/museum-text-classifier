@@ -10,19 +10,19 @@ After resolving structural and labeling issues, the text data was tokenized and 
 - Explore dataset structure through token statistics, dataset distribution, and text length analysis
 - Evaluate model performance using accuracy, precision, recall, macro-F1, and confusion matrices
 - Diagnose dataset labeling issues and correct validation-set anomalies to ensure fair evaluation
-- Compare multiple transformer architectures (BERT, RoBERTa, DistilBERT, BioMedBERT) and identify best-performing model
+- Compare multiple transformer architectures (BERT, RoBERTa, DistilBERT, BioMedBERT) and identify the best-performing model
 
 ## Dataset
 The dataset consists of text records from multiple museum institutions, each entry containing descriptive metadata associated with cultural or archival items. The data was originally provided in JSON format with inconsistent key structures and varying field completeness across institutions.
 
-Each record includes short textual descriptions, institutional labels, and additional metadata fields. As part of preprocessing, duplicated or empty entries were removed, field names were normalized, and mislabelled instances were corrected. The final dataset was prepared for supervised learning by assigning each cleaned record to one of the museum institution classes.
+Each record includes short textual descriptions, institutional labels, and metadata fields. As part of preprocessing, duplicated or empty entries were removed, field names were harmonized, and mislabeled instances were corrected. The final dataset was prepared for supervised learning by assigning each cleaned record to one of the museum institution classes.
 
 ## Methodology
-- Cleaned and standardised noisy museum text data with inconsistent keys and missing values
-- Applied tokenisation and lemmatisation to analyse text structure and common terms
+- Cleaned and standardized noisy museum text data with inconsistent keys and missing values
+- Applied tokenization and lemmatization to analyze text structure and common terms
 - Addressed label inconsistencies and validation issues to ensure fair evaluation
-- Evaluated models with accuracy, precision, recall, macro-F1, and confusion matrices
 - Fine-tuned multiple transformer models for multi-class text classification
+- Evaluated models using accuracy, precision, recall, macro-F1, and confusion matrices
 
 ## Tools & Libraries
 
@@ -34,9 +34,26 @@ Each record includes short textual descriptions, institutional labels, and addit
 - Scikit-learn (metrics & evaluation)
 - Pandas / JSON handling
 
-
 ## Results
+
+Multiple transformer models were tested for multi-class museum record classification.  
+General-domain BERT models performed best, while a biomedical domain model performed worst due to domain mismatch.
+
+| Model | Test Accuracy | Test Macro-F1 | Notes |
+|-------|--------------:|--------------:|------|
+| BERT-Base-Uncased | **0.88** | **0.88** | Best overall general performance |
+| DistilBERT-Base-Uncased | 0.86 | 0.86 | Nearly matches BERT with fewer parameters |
+| RoBERTa-Base | 0.86 | 0.86 | Strong performer but less consistent |
+| BioMedBERT | 0.82 | 0.81 | Domain mismatch → lower performance |
+
+> **General-domain transformers were more effective than domain-specific models for cultural-heritage text.**  
+> Class imbalance affected minority class performance, making macro-F1 a better metric than accuracy.
+
 ## Key Learnings
+- Real-world text datasets require cleaning and label correction before modeling
+- Macro-F1 is more reliable than accuracy for imbalanced multi-class datasets
+- Small label errors and class imbalance meaningfully impact evaluation quality
+- General-domain BERT models performed best; domain-specific BioMedBERT underperformed
 
 ## How to Run
 
@@ -69,7 +86,8 @@ pip install pandas numpy scikit-learn transformers torch
 
 ## Course Information
 
-This project was completed as part of the **Text As Data** coursework during my MSc in Data Science, focused on applying Natural Language Processing (NLP) techniques to real-world textual datasets. The assignment involved building a multi-class classifier to automatically categorize museum archival records, with an emphasis on data cleaning, tokenization, feature extraction, and supervised machine learning evaluation.
+This project was completed as part of the Text As Data coursework during my MSc in Data Science. The module focused on practical Natural Language Processing, including text preprocessing, tokenization, transformer-based modeling, and supervised learning evaluation on real-world datasets.
 
 ## Acknowledgment
-This project was completed as part of the **Text as Data** coursework. I would like to thank the course instructors and teaching team for their guidance and for providing the dataset and project framework.
+
+This project was completed as part of the Text As Data course. Many thanks to the teaching team for providing the dataset, project structure, and academic guidance.
