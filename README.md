@@ -50,7 +50,7 @@ cd museum-text-classifier
 
 ### Launch Jupyter Notebook
 ```bash
-pip install pandas numpy scikit-learn transformers torch
+jupyter notebook TextClassifier.ipynb
 ```
 
 ### Install required libraries (if needed)
