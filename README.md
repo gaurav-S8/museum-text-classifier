@@ -1,1 +1,1 @@
-# Multi-Class Text Classification on Museum Archival Records Using NLP
+# Multi-Class Text Classification on Museum Records Using NLP
